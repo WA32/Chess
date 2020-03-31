@@ -113,6 +113,65 @@ public class Board {
 		board[7][7].setPiece("R");
 	}
 	
+	public boolean moves(String queryInput, String turn, String mode){
+		if(mode.equals("algebraic")){
+			// algebraic mode
+			//
+			boolean isPawn = ( 
+					//queryInput.length() == 2 || 
+					Character.isDigit(queryInput.charAt(1)) 
+					) ? true : false;
+			if(isPawn){
+				// input is 
+			}else{
+				char piece = queryInput.charAt(0);
+				
+				
+			}
+			
+		}else{
+			// coordinate mode
+			//
+			boolean isCoordinateValid = ( 
+					queryInput.length() == 5 &&
+					Character.isAlphabetic(queryInput.charAt(0)) &&
+					Character.isAlphabetic(queryInput.charAt(1)) &&
+					Character.isAlphabetic(queryInput.charAt(3)) &&
+					Character.isAlphabetic(queryInput.charAt(4))
+					) ? true : false;
+			
+			if(isCoordinateValid){
+				char colSourceChar = queryInput.charAt(0);
+				char rowSourceChar = queryInput.charAt(1);
+				
+				char colDestChar = queryInput.charAt(3);
+				char rowDestChar = queryInput.charAt(4);
+				
+				int colSource = (colSourceChar - 'A');
+				int rowSource = (rowSourceChar - '1');
+				int colDest = (colDestChar - 'A');
+				int rowDest = (rowDestChar - '1');
+				
+				String piece = board[rowSource][colSource].getPiece();
+
+				// TODO : validate if piece can moved
+				//
+				
+				board[rowSource][colSource].setPiece("X");
+				board[rowDest][colDest].setPiece(piece);
+				
+				
+				return true;
+			}else{
+				System.out.println("Invalid format coordinate");
+				main.finish = false;
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	public void drawBoard(){
 		for(int i = 7; i >= 0 ; i--){
 			for(int j = 0; j < 8 ; j++){
@@ -122,10 +181,10 @@ public class Board {
 					System.out.print(board[i][j].getPiece() + " ");
 				}
 			}
-			System.out.println(" (" + i +") ");
+			System.out.println(" (" + (i+1) +") ");
 		}
 		for(int i = 'A'; i < 'I' ; i++) System.out.print((char)i + " ");
-		
+		System.out.println("");
 	}
 	
 }
