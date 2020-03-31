@@ -1,8 +1,25 @@
 package chess;
 
 public class Main {
+	
+	Board board;
+	Player white, black;
+	
+	public void initMain(){
+		board = new Board(this);
+		
+		white = new Player();
+		white.doTurn(true);
+		
+		black = new Player();
+		black.doTurn(false);
+	}
+	
 	public Main() {
-		System.out.println("Test Code");
+		initMain();
+		
+		board.drawBoard();
+		
 	}
 
 	public static void main(String[] args) {
