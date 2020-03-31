@@ -132,13 +132,23 @@ public class Board {
 		}else{
 			// coordinate mode
 			//
-			boolean isCoordinateValid = ( 
-					queryInput.length() == 5 &&
-					Character.isAlphabetic(queryInput.charAt(0)) &&
-					Character.isAlphabetic(queryInput.charAt(1)) &&
+			boolean isCoordinateValid = false;
+			if(queryInput.length() == 5){
+				if(	Character.isAlphabetic(queryInput.charAt(0)) &&
+					Character.isDigit(queryInput.charAt(1)) &&
 					Character.isAlphabetic(queryInput.charAt(3)) &&
-					Character.isAlphabetic(queryInput.charAt(4))
-					) ? true : false;
+					Character.isDigit(queryInput.charAt(4))) isCoordinateValid = true;
+				else isCoordinateValid = false;
+			}else if(queryInput.length() == 6){
+				if(	Character.isAlphabetic(queryInput.charAt(0)) &&
+					Character.isDigit(queryInput.charAt(1)) &&
+					Character.isAlphabetic(queryInput.charAt(3)) &&
+					Character.isDigit(queryInput.charAt(4)) &&
+					Character.isAlphabetic(queryInput.charAt(5))) isCoordinateValid = true;
+				else isCoordinateValid = false;
+			}else {
+				isCoordinateValid = false;
+			}
 			
 			if(isCoordinateValid){
 				char colSourceChar = queryInput.charAt(0);
