@@ -67,7 +67,6 @@ public class Board {
 	 * r n b q k b n r
 	 */
 	private void setWhitePlayer(){
-//		board[0][0] = new Piece("r");
 		board[0][0].setPiece("r");
 		board[0][1].setPiece("n");
 		board[0][2].setPiece("b");

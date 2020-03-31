@@ -18,8 +18,9 @@ public class Main {
 	public Main() {
 		initMain();
 		
-		board.drawBoard();
 		
+		
+		board.drawBoard();
 	}
 
 	public static void main(String[] args) {
