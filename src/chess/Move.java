@@ -25,6 +25,10 @@ public class Move {
 	public static boolean isValidPawn(int sourceRow, int sourceCol, 
 										int destRow, int destCol,
 										String turn){
+		if(sourceRow < 0 || sourceRow > 7 || 
+			sourceCol < 0 || sourceCol > 7 || 
+			destRow < 0  || destRow > 7 ||
+			destCol < 0 || destCol > 7) return false;
 		
 		if(turn.equals("WHITE")){
 			if(sourceRow == 1){
@@ -59,4 +63,9 @@ public class Move {
 	
 		
 	}
+
+	public static boolean isValidRook(){
+		return false;
+	}
+
 }
