@@ -1,16 +1,14 @@
 package chess;
 
-import javax.sql.RowSet;
-
 public class Move {
 	private Main main;
-	private Board board;
+	private Piece[][] board;
 	
 	public Move(){}
 	
-	public Move(Board board, Main main){
-		this.board = board;
-		this.main = main;
+	public Move(Piece[][] b, Main m){
+		this.board = b;
+		this.main = m;
 	}
 	
 	/**
@@ -22,15 +20,18 @@ public class Move {
 	 * @param turn
 	 * @return true|false
 	 */
-	public static boolean isValidPawn(int sourceRow, int sourceCol, 
+	public boolean isValidPawn(int sourceRow, int sourceCol, 
 										int destRow, int destCol,
 										String turn){
+		
 		if(sourceRow < 0 || sourceRow > 7 || 
 			sourceCol < 0 || sourceCol > 7 || 
 			destRow < 0  || destRow > 7 ||
 			destCol < 0 || destCol > 7) return false;
 		
 		if(turn.equals("WHITE")){
+			if(isWhitePieceExist(sourceRow, sourceCol) == false) return false;		
+			
 			if(sourceRow == 1){
 				// pawn bisa 2 langkah
 				if(sourceCol == destCol && 
@@ -39,12 +40,20 @@ public class Move {
 				
 				return false;
 			}else{
-				// pawn hanya bisa 1 langkah
-				if(sourceCol == destCol && destRow-sourceRow == 1) return true;
+				// pawn hanya bisa 1 langkah dan tidak ada musuh di dpn
+				if(sourceCol == destCol && destRow-sourceRow == 1 && !isBlackPieceExist(destRow, destCol)) 
+					return true;
+				//validate to eat black piece 
+				if(sourceCol != destCol && 
+					(sourceRow+1 == destRow || sourceCol-1 == destCol || sourceCol+1 == destCol ) &&
+					isBlackPieceExist(destRow, destCol) ) 
+					return true;
 				
 				return false;
 			}			
 		}else if(turn.equals("BLACK")){
+			if(isBlackPieceExist(sourceRow, sourceCol) == false) return false;	
+			
 			if(sourceRow == 6){
 				// pawn bisa 2 langkah
 				if(sourceCol == destCol && 
@@ -52,8 +61,13 @@ public class Move {
 				
 				return false;
 			}else{
-				// pawn hanya bisa 1 langkah
-				if( sourceCol == destCol && destRow-sourceRow == -1) return true;
+				// pawn hanya bisa 1 langkah dan tidak ada musuh di dpn
+				if( sourceCol == destCol && destRow-sourceRow == -1 && !isWhitePieceExist(destRow, destCol)) 
+					return true;
+				//validate to eat black piece 
+				if(sourceCol != destCol && 
+					(sourceRow == destRow-1 || sourceCol-1 == destCol || sourceCol+1 == destCol ) &&
+					isWhitePieceExist(destRow, destCol) ) return true;
 				
 				return false;
 			}
@@ -61,11 +75,76 @@ public class Move {
 			return false;
 		}
 	
-		
 	}
 
-	public static boolean isValidRook(){
+	public static boolean isValidRook(int sourceRow, int sourceCol, 
+										int destRow, int destCol,
+										String turn){
+		if(sourceRow < 0 || sourceRow > 7 || 
+				sourceCol < 0 || sourceCol > 7 || 
+				destRow < 0  || destRow > 7 ||
+				destCol < 0 || destCol > 7) return false;
+		
+		
+		
 		return false;
 	}
 
+	
+	/**
+	 * Check if piece exist in board coordinate
+	 * @param row
+	 * @param col
+	 * @return true|false
+	 */
+	private boolean isPieceExist(int row, int col){
+		String piece = board[row][col].getPiece();
+		
+		if(piece.equals("p") || piece.equals("P")) return true;
+		else if(piece.equals("r") || piece.equals("R")) return true;
+		else if(piece.equals("n") || piece.equals("N")) return true;
+		else if(piece.equals("b") || piece.equals("B")) return true;
+		else if(piece.equals("q") || piece.equals("Q")) return true;
+		else if(piece.equals("k") || piece.equals("K")) return true;
+		
+		return false;
+	}
+	
+	/**
+	 * Check if white piece exist in board coordinate
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	private boolean isWhitePieceExist(int row, int col){
+		String piece = board[row][col].getPiece();
+		
+		if(piece.equals("p")) return true;
+		else if(piece.equals("r")) return true;
+		else if(piece.equals("n")) return true;
+		else if(piece.equals("b")) return true;
+		else if(piece.equals("q")) return true;
+		else if(piece.equals("k")) return true;
+		
+		return false;
+	}
+	
+	/**
+	 * Check if Black piece exist in board coordinate
+	 * @param row
+	 * @param col
+	 * @return
+	 */
+	private boolean isBlackPieceExist(int row, int col){
+		String piece = board[row][col].getPiece();
+		
+		if(piece.equals("P")) return true;
+		else if(piece.equals("R")) return true;
+		else if(piece.equals("N")) return true;
+		else if(piece.equals("B")) return true;
+		else if(piece.equals("Q")) return true;
+		else if(piece.equals("K")) return true;
+		
+		return false;
+	}
 }

@@ -1,6 +1,5 @@
 package chess;
 
-import sun.print.PeekGraphics;
 
 /**
  * Board
@@ -22,7 +21,7 @@ public class Board {
 	public Board(Main game) {
 		initBoard();	
 		this.main = game;
-		this.move = new Move(this, game);
+		this.move = new Move(board, game);
 	}
 	
 	private void initBoard(){
@@ -174,14 +173,14 @@ public class Board {
 				
 				if(piece.equals("p")){
 					// White Pawn
-					if(Move.isValidPawn(rowSource, colSource, rowDest, colDest, "WHITE") == false){
-						System.out.println("White Pawn invalid move");
+					if(move.isValidPawn(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+						System.out.println(turn + " invalid move");
 						return false;
 					}
 				}else if(piece.equals("P")){
 					// Black Pawn
-					if(Move.isValidPawn(rowSource, colSource, rowDest, colDest, "BLACK") == false){
-						System.out.println("Black Pawn invalid move");
+					if(move.isValidPawn(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+						System.out.println(turn + " invalid move");
 						return false;
 					}
 				}else if(piece.equals("r")){
