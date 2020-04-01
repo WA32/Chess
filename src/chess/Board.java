@@ -171,28 +171,21 @@ public class Board {
 				// TODO : validate if piece can moved
 				// 
 				
-				if(piece.equals("p")){
-					// White Pawn
+				if(piece.equals("p") || piece.equals("P")){
+					// Pawn
 					if(move.isValidPawn(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}
-				}else if(piece.equals("P")){
-					// Black Pawn
-					if(move.isValidPawn(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+				}else if(piece.equals("r") || piece.equals("R")){
+					// Rook
+					if(move.isValidRook(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}
-				}else if(piece.equals("r")){
-					// White Rook
+				}else if(piece.equals("n") || piece.equals("N")){
+					// Knight / Kuda
 					
-				}else if(piece.equals("R")){
-					// Black Rook
-					
-				}else if(piece.equals("n")){
-					// White Knight / Kuda
-				}else if(piece.equals("N")){
-					// Black Knight / Kuda
 				}else if(piece.equals("b")){
 					// White Bishop
 				}else if(piece.equals("B")){

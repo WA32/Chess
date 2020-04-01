@@ -10,7 +10,7 @@
 UTS 
  - Draw Board V
  - Move notation (coordinate & algebraic)
- - all piece regular moves
+ - all piece regular moves (progress)
  - check
  - castling
  - validate illegal move: king must always in safe position.
