@@ -218,24 +218,43 @@ public class Move {
 		}
 	}	
 	
+	
 	public boolean isValidKing(int sourceRow, int sourceCol, 
-									int destRow, int destCol,
-									String turn){
-		if(sourceRow < 0 || sourceRow > 7 || 
-			sourceCol < 0 || sourceCol > 7 || 
-			destRow < 0  || destRow > 7 ||
-			destCol < 0 || destCol > 7) return false;
-			
-		if(turn.equals("WHITE")){
-			
-			
-			return true;
-		}else if(turn.equals("BLACK")){
-		
-			return true;
-		}else{
-			return false;
-		}
+			int destRow, int destCol,
+			String turn){
+			if(sourceRow < 0 || sourceRow > 7 || 
+						sourceCol < 0 || sourceCol > 7 || 
+							destRow < 0  || destRow > 7 ||
+								destCol < 0 || destCol > 7) return false;
+
+			if(turn.equals("WHITE")){
+				//cek jika  ada piece 
+				if(isWhitePieceExist(sourceRow, sourceCol) == false) return false;		
+				
+				//cek jika ada piece putih di tujuan
+				if(isWhitePieceExist(destRow, destCol) == true) return false;
+				
+				//king jalan hanya 1 langkah
+				
+				if(Math.abs(destCol - sourceCol) > 1 && Math.abs(destRow - sourceRow ) > 1) return false;
+
+				return true;
+			}else if(turn.equals("BLACK")){
+				//cek jika  ada piece 
+				if(isBlackPieceExist(sourceRow, sourceCol) == false) return false;		
+				
+				//cek jika ada piece hitam di tujuan
+				if(isBlackPieceExist(destRow, destCol) == true) return false;
+				
+				//king jalan hanya 1 langkah
+				
+				if(Math.abs(destCol - sourceCol) > 1 && Math.abs(destRow - sourceRow ) > 1) return false;
+				
+
+				return true;
+			}else{
+				return false;
+			}
 	}
 	
 	/**

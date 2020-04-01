@@ -194,10 +194,12 @@ public class Board {
 					// White Queen
 				}else if(piece.equals("Q")){
 					// Black Queen
-				}else if(piece.equals("k")){
-					// White King
-				}else if(piece.equals("K")){
-					// Black King
+				}else if(piece.equals("k") || piece.equals("K")){
+					//  King
+					if(move.isValidKing(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+						System.out.println(turn + " invalid move");
+						return false;
+					}
 				}
 				
 				board[rowSource][colSource].setPiece("X");
