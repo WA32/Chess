@@ -1,5 +1,6 @@
 package chess;
 
+import sun.print.PeekGraphics;
 
 /**
  * Board
@@ -16,10 +17,12 @@ package chess;
 public class Board {
 	private Main main;
 	private Piece[][] board = new Piece[8][8];
+	private Move move;
 	
 	public Board(Main game) {
 		initBoard();	
 		this.main = game;
+		this.move = new Move(this, game);
 	}
 	
 	private void initBoard(){
@@ -162,10 +165,48 @@ public class Board {
 				int colDest = (colDestChar - 'A');
 				int rowDest = (rowDestChar - '1');
 				
+//				System.out.println("rowSource - rowDest : " + rowSource + " - " + rowDest);
+				
 				String piece = board[rowSource][colSource].getPiece();
 
 				// TODO : validate if piece can moved
-				//
+				// 
+				
+				if(piece.equals("p")){
+					// White Pawn
+					if(Move.isValidPawn(rowSource, colSource, rowDest, colDest, "WHITE") == false){
+						System.out.println("White Pawn invalid move");
+						return false;
+					}
+				}else if(piece.equals("P")){
+					// Black Pawn
+					if(Move.isValidPawn(rowSource, colSource, rowDest, colDest, "BLACK") == false){
+						System.out.println("Black Pawn invalid move");
+						return false;
+					}
+				}else if(piece.equals("r")){
+					// White Rook
+					
+				}else if(piece.equals("R")){
+					// Black Rook
+					
+				}else if(piece.equals("n")){
+					// White Knight / Kuda
+				}else if(piece.equals("N")){
+					// Black Knight / Kuda
+				}else if(piece.equals("b")){
+					// White Bishop
+				}else if(piece.equals("B")){
+					// Black Bishop
+				}else if(piece.equals("q")){
+					// White Queen
+				}else if(piece.equals("Q")){
+					// Black Queen
+				}else if(piece.equals("k")){
+					// White King
+				}else if(piece.equals("K")){
+					// Black King
+				}
 				
 				board[rowSource][colSource].setPiece("X");
 				board[rowDest][colDest].setPiece(piece);
