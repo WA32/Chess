@@ -136,18 +136,107 @@ public class Move {
 			destCol < 0 || destCol > 7) return false;
 		
 		if(turn.equals("WHITE")){
+			// TODO : Check if Knight move is valid
+			//			and if destination is empty
+			if((sourceCol+1 == destCol && sourceRow+2 == destRow) ||
+				(sourceCol-1 == destCol && sourceRow+2 == destRow) ||
+				(sourceCol+2 == destCol && sourceRow+1 == destRow) ||
+				(sourceCol-2 == destCol && sourceRow+1 == destRow) ||
+				
+				(sourceCol+1 == destCol && sourceRow-2 == destRow) ||
+				(sourceCol-1 == destCol && sourceRow-2 == destRow) ||
+				(sourceCol+2 == destCol && sourceRow-1 == destRow) ||
+				(sourceCol-2 == destCol && sourceRow-1 == destRow) ){
+				if(isWhitePieceExist(destRow, destCol) == false) return true;
+				
+				return false;
+			}
+			
+			return false;
+		}else if(turn.equals("BLACK")){
+			// TODO : Check if Knight move is valid
+			//			and if destination is empty
+			if((sourceCol+1 == destCol && sourceRow+2 == destRow) ||
+				(sourceCol-1 == destCol && sourceRow+2 == destRow) ||
+				(sourceCol+2 == destCol && sourceRow+1 == destRow) ||
+				(sourceCol-2 == destCol && sourceRow+1 == destRow) ||
+				
+				(sourceCol+1 == destCol && sourceRow-2 == destRow) ||
+				(sourceCol-1 == destCol && sourceRow-2 == destRow) ||
+				(sourceCol+2 == destCol && sourceRow-1 == destRow) ||
+				(sourceCol-2 == destCol && sourceRow-1 == destRow) ){
+				if(isBlackPieceExist(destRow, destCol) == false) return true;
+				
+				return false;
+			}
+			
+			return false;
+		}else{
+			return false;
+		}
+	}
+	
+	public boolean isValidBishop(int sourceRow, int sourceCol, 
+									int destRow, int destCol,
+									String turn){
+		if(sourceRow < 0 || sourceRow > 7 || 
+		sourceCol < 0 || sourceCol > 7 || 
+		destRow < 0  || destRow > 7 ||
+		destCol < 0 || destCol > 7) return false;
+		
+		if(turn.equals("WHITE")){
+			// TODO : Check if Bishop move is valid
+			//			and if destination is empty
 			
 			return true;
 		}else if(turn.equals("BLACK")){
+			// TODO : Check if Bishop move is valid
+			//			and if destination is empty
 			
 			return true;
 		}else{
 			return false;
 		}
-		
-
 	}
 	
+	public boolean isValidQueen(int sourceRow, int sourceCol, 
+									int destRow, int destCol,
+									String turn){
+		if(sourceRow < 0 || sourceRow > 7 || 
+		sourceCol < 0 || sourceCol > 7 || 
+		destRow < 0  || destRow > 7 ||
+		destCol < 0 || destCol > 7) return false;
+		
+		if(turn.equals("WHITE")){
+		
+			return true;
+		}else if(turn.equals("BLACK")){
+		
+			return true;
+		}else{
+			return false;
+		}
+	}	
+	
+	public boolean isValidKing(int sourceRow, int sourceCol, 
+									int destRow, int destCol,
+									String turn){
+		if(sourceRow < 0 || sourceRow > 7 || 
+			sourceCol < 0 || sourceCol > 7 || 
+			destRow < 0  || destRow > 7 ||
+			destCol < 0 || destCol > 7) return false;
+			
+		if(turn.equals("WHITE")){
+			
+			
+			return true;
+		}else if(turn.equals("BLACK")){
+		
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
 	/**
 	 * Check if piece exist in board coordinate
