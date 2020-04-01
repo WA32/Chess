@@ -188,6 +188,7 @@ public class Move {
 			// TODO : Check if Bishop move is valid
 			//			and if destination is empty
 			
+			
 			return true;
 		}else if(turn.equals("BLACK")){
 			// TODO : Check if Bishop move is valid
