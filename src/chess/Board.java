@@ -163,13 +163,10 @@ public class Board {
 				int rowSource = (rowSourceChar - '1');
 				int colDest = (colDestChar - 'A');
 				int rowDest = (rowDestChar - '1');
-				
-//				System.out.println("rowSource - rowDest : " + rowSource + " - " + rowDest);
-				
+								
 				String piece = board[rowSource][colSource].getPiece();
 
-				// TODO : validate if piece can moved
-				// 
+				// validate if piece can moved
 				
 				if(piece.equals("p") || piece.equals("P")){
 					// Pawn

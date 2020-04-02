@@ -184,9 +184,8 @@ public class Move {
 							destCol < 0 || destCol > 7) return false;
 
 			if(turn.equals("WHITE")){
-				// TODO : Check if Bishop move is valid
-				//			and if destination is empty
-				//cek jika piece ada
+				// Check if Bishop move is valid and if destination is empty
+				// cek jika piece ada
 				if(isWhitePieceExist(sourceRow, sourceCol) == false) return false;
 
 				//cek jika di tujuan ada piece putih
@@ -235,21 +234,16 @@ public class Move {
 					//gerakan kiri bawah
 					else if(destRow < sourceRow && destCol < sourceCol){
 						for(int i = sourceRow - 1,j = sourceCol - 1; i > destRow ; i--,j--){
-							
 							if(isWhitePieceExist(i, j) == true) return false;
 							else if(isBlackPieceExist(i, j) == true) return false;
-							
 						}
-
 					}
 
 				}
 
-
 				return true;
 			}else if(turn.equals("BLACK")){
-				// TODO : Check if Bishop move is valid
-				//			and if destination is empty
+				// Check if Bishop move is valid and if destination is empty
 				//cek jika piece ada
 				if(isBlackPieceExist(sourceRow, sourceCol) == false) return false;
 
