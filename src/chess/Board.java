@@ -118,19 +118,26 @@ public class Board {
 	public boolean moves(String queryInput, String turn, String mode){
 		if(mode.equals("algebraic")){
 			// algebraic mode
-			//
-			boolean isPawn = ( 
-					//queryInput.length() == 2 || 
-					Character.isDigit(queryInput.charAt(1)) 
-					) ? true : false;
-			if(isPawn){
-				// input is 
-			}else{
-				char piece = queryInput.charAt(0);
-				
-				
-			}
 			
+			if(queryInput.length() == 2){
+				// Pawn movement
+				
+				
+			}else if(queryInput.length() == 3 && !queryInput.equals("0-0")){
+				// Pawn Promotion &&
+				// Rook, Knight, Bishop, Queen, King movement
+				
+			}else{
+				if(queryInput.equals("0-0-0")){
+					// For queenside castling 
+					
+				}else if(queryInput.equals("0-0")){
+					// For kingside castling
+					
+				}
+			}
+
+
 		}else{
 			// coordinate mode
 			//
