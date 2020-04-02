@@ -142,6 +142,7 @@ public class Board {
 			// coordinate mode
 			//
 			boolean isCoordinateValid = false;
+						
 			if(queryInput.length() == 5){
 				if(	Character.isAlphabetic(queryInput.charAt(0)) &&
 					Character.isDigit(queryInput.charAt(1)) &&
@@ -172,9 +173,57 @@ public class Board {
 				int rowDest = (rowDestChar - '1');
 								
 				String piece = board[rowSource][colSource].getPiece();
+				String pieceDest = board[rowDest][colDest].getPiece();
 
-				// validate if piece can moved
+				// castling
+				if(queryInput.equals("E1-G1") && piece.equals("k") && pieceDest.equals("r")){
+					// white kingside castling
+					if(move.isValidKingsideCastling(0, 4, 0, 6, turn) == false)
+						return false;
+					
+					board[0][4].setPiece("X");
+					board[0][7].setPiece("X");
+					
+					board[0][6].setPiece("k");
+					board[0][5].setPiece("r");
+					return true;
+				}else if(queryInput.equals("E1-C1") && piece.equals("k") && pieceDest.equals("r")){
+					// white queenside castling
+					if(move.isValidQueensideCastling(0, 4, 0, 2, turn) == false)
+						return false;
+					
+					board[0][4].setPiece("X");
+					board[0][0].setPiece("X");
+					
+					board[0][2].setPiece("k");
+					board[0][3].setPiece("r");
+					return true;
+				}else if(queryInput.equals("E8-G8") && piece.equals("K") && pieceDest.equals("R")){
+					// black kingside castling
+					if(move.isValidKingsideCastling(7, 4, 7, 6, turn) == false)
+						return false;
+					
+					board[7][4].setPiece("X");
+					board[7][7].setPiece("X");
+					
+					board[7][6].setPiece("k");
+					board[7][5].setPiece("r");
+					return true;
+				}else if(queryInput.equals("E8-C8") && piece.equals("K") && pieceDest.equals("R")){
+					// black queenside castling
+					if(move.isValidQueensideCastling(7, 4, 7, 2, turn) == false)
+						return false;
+					
+					board[7][4].setPiece("X");
+					board[7][0].setPiece("X");
+					
+					board[7][2].setPiece("k");
+					board[7][3].setPiece("r");
+					return true;
+				}
 				
+				// validate if piece can moved
+				// normal move
 				if(piece.equals("p") || piece.equals("P")){
 					// Pawn
 					if(move.isValidPawn(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){

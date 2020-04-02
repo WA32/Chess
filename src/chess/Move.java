@@ -324,8 +324,8 @@ public class Move {
 	
 	
 	public boolean isValidKing(int sourceRow, int sourceCol, 
-			int destRow, int destCol,
-			String turn){
+								int destRow, int destCol,
+								String turn){
 			if(sourceRow < 0 || sourceRow > 7 || 
 						sourceCol < 0 || sourceCol > 7 || 
 							destRow < 0  || destRow > 7 ||
@@ -359,6 +359,28 @@ public class Move {
 			}else{
 				return false;
 			}
+	}
+	
+	public boolean isValidKingsideCastling(int sourceRow, int sourceCol, 
+									int destRow, int destCol,
+									String turn){
+		if(sourceRow < 0 || sourceRow > 7 || 
+			sourceCol < 0 || sourceCol > 7 || 
+			destRow < 0  || destRow > 7 ||
+			destCol < 0 || destCol > 7) return false;
+		
+		return true;
+	}
+	
+	public boolean isValidQueensideCastling(int sourceRow, int sourceCol, 
+									int destRow, int destCol,
+									String turn){
+		if(sourceRow < 0 || sourceRow > 7 || 
+			sourceCol < 0 || sourceCol > 7 || 
+			destRow < 0  || destRow > 7 ||
+			destCol < 0 || destCol > 7) return false;
+		
+		return true;
 	}
 	
 	/**
