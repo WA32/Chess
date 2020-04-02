@@ -245,11 +245,14 @@ public class Board {
 						System.out.println(turn + " invalid move");
 						return false;
 					}
-				}else if(piece.equals("q")){
-					// White Queen
-				}else if(piece.equals("Q")){
-					// Black Queen
-				}else if(piece.equals("k") || piece.equals("K")){
+				}else if(piece.equals("q") || piece.equals("Q")){
+					//  Queen
+					if(move.isValidQueen(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+						System.out.println(turn + " invalid move");
+						return false;
+					}
+					
+				}}else if(piece.equals("k") || piece.equals("K")){
 					//  King
 					if(move.isValidKing(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
