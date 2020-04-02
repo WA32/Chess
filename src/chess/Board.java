@@ -186,10 +186,12 @@ public class Board {
 				}else if(piece.equals("n") || piece.equals("N")){
 					// Knight / Kuda
 					
-				}else if(piece.equals("b")){
-					// White Bishop
-				}else if(piece.equals("B")){
-					// Black Bishop
+				}else if(piece.equals("b") || piece.equals("B")){
+					// Bishop
+					if(move.isValidBishop(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+						System.out.println(turn + " invalid move");
+						return false;
+					}
 				}else if(piece.equals("q")){
 					// White Queen
 				}else if(piece.equals("Q")){
