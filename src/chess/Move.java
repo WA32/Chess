@@ -175,6 +175,7 @@ public class Move {
 			return false;
 		}
 	}
+	
 	public boolean isValidBishop(int sourceRow, int sourceCol, 
 			int destRow, int destCol,
 			String turn){
@@ -302,7 +303,6 @@ public class Move {
 			}
 	}
 	
-	
 	public boolean isValidQueen(int sourceRow, int sourceCol, 
 									int destRow, int destCol,
 									String turn){
@@ -369,7 +369,31 @@ public class Move {
 			destRow < 0  || destRow > 7 ||
 			destCol < 0 || destCol > 7) return false;
 		
-		return true;
+		if(turn.equals("WHITE")){
+			// cek jika king dan rook ada di posisi
+			// cek jika sepanjang jalan ada piece lainnya
+			
+			if(board[0][4].getPiece().equals("k") && 
+				board[0][7].getPiece().equals("r")){
+				if(isBlackPieceExist(0, 5) || isWhitePieceExist(0, 5)) return false;
+				if(isBlackPieceExist(0, 6) || isWhitePieceExist(0, 6)) return false;		
+				return true;
+			}
+			return false;
+		}else if(turn.equals("BLACK")){
+			// cek jika king dan rook ada di posisinya
+			// cek jika sepanjang jalan ada piece lainnya
+			if(board[7][4].getPiece().equals("K") && 
+				board[7][7].getPiece().equals("R")){
+				if(isBlackPieceExist(7, 5) || isWhitePieceExist(7, 5)) return false;
+				if(isBlackPieceExist(7, 6) || isWhitePieceExist(7, 6)) return false;		
+				return true;
+			}
+			return false;
+		}else{
+			return false;
+		}
+		
 	}
 	
 	public boolean isValidQueensideCastling(int sourceRow, int sourceCol, 
@@ -380,7 +404,32 @@ public class Move {
 			destRow < 0  || destRow > 7 ||
 			destCol < 0 || destCol > 7) return false;
 		
-		return true;
+		if(turn.equals("WHITE")){
+			// cek jika king dan rook ada di posisi
+			// cek jika sepanjang jalan ada piece lainnya
+			
+			if(board[0][4].getPiece().equals("k") && 
+				board[0][0].getPiece().equals("r")){
+				if(isBlackPieceExist(0, 3) || isWhitePieceExist(0, 3)) return false;
+				if(isBlackPieceExist(0, 2) || isWhitePieceExist(0, 2)) return false;
+				if(isBlackPieceExist(0, 1) || isWhitePieceExist(0, 1)) return false;
+				return true;
+			}
+			return false;
+		}else if(turn.equals("BLACK")){
+			// cek jika king dan rook ada di posisinya
+			// cek jika sepanjang jalan ada piece lainnya
+			if(board[7][4].getPiece().equals("k") && 
+					board[7][0].getPiece().equals("r")){
+					if(isBlackPieceExist(0, 3) || isWhitePieceExist(0, 3)) return false;
+					if(isBlackPieceExist(0, 2) || isWhitePieceExist(0, 2)) return false;
+					if(isBlackPieceExist(0, 1) || isWhitePieceExist(0, 1)) return false;
+					return true;
+				}
+			return false;
+		}else{
+			return false;
+		}
 	}
 	
 	/**
