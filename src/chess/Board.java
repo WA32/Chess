@@ -174,6 +174,21 @@ public class Board {
 								
 				String piece = board[rowSource][colSource].getPiece();
 				String pieceDest = board[rowDest][colDest].getPiece();
+				
+				// temp move piece for check is king in check
+				board[rowSource][colSource].setPiece("X");
+				board[rowDest][colDest].setPiece(piece);
+				
+				// king In Check
+				if(move.isKingInCheck(turn.toUpperCase()) == true){
+					// king is in check
+					
+					System.out.println("You're king is in check");
+					return false;
+				}else{
+					board[rowSource][colSource].setPiece(piece);
+					board[rowDest][colDest].setPiece(pieceDest);
+				}
 
 				// castling
 				if(queryInput.equals("E1-G1") && piece.equals("k") && pieceDest.equals("r")){
@@ -238,7 +253,10 @@ public class Board {
 					}
 				}else if(piece.equals("n") || piece.equals("N")){
 					// Knight / Kuda
-					
+					if(move.isValidKnight(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+						System.out.println(turn + " invalid move");
+						return false;
+					}
 				}else if(piece.equals("b") || piece.equals("B")){
 					// Bishop
 					if(move.isValidBishop(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
@@ -252,7 +270,7 @@ public class Board {
 						return false;
 					}
 					
-				}}else if(piece.equals("k") || piece.equals("K")){
+				}else if(piece.equals("k") || piece.equals("K")){
 					//  King
 					if(move.isValidKing(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");

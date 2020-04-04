@@ -463,7 +463,6 @@ public class Move {
 		}
 	}	
 	
-	
 	public boolean isValidKing(int sourceRow, int sourceCol, 
 								int destRow, int destCol,
 								String turn){
@@ -571,6 +570,287 @@ public class Move {
 		}else{
 			return false;
 		}
+	}
+	
+	public boolean isKingInCheck(String turn){
+		
+		if(turn.equals("WHITE")){
+			// find white king location
+			boolean isFound = false;
+			int row = 0;
+			int col = 0;
+			for(int i = 0; i < 8 ; i++){
+				for(int j = 0; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("k")){
+						isFound = true;
+						row = i;
+						col = j;
+					}
+					
+					if(isFound == true) break;
+				}
+				if(isFound == true) break;
+			}
+			
+			// check if enemy knight can eat white king
+			if(row+2 <= 7 && col+1 <= 7){
+				// bisa ke atas 2 kanan 1
+				if(board[row+2][col+1].getPiece().equals("N")){
+					return true;
+				}
+			}
+			if(row+2 <= 7 && col-1 >= 0){
+				// bisa ke atas 2 kiri 1
+				if(board[row+2][col-1].getPiece().equals("N")){
+					return true;
+				}
+			}
+			if(row+1 <= 7 && col+2 <= 7){
+				// bisa ke atas 1 kanan 2
+				if(board[row+1][col+2].getPiece().equals("N")){
+					return true;
+				}
+			}
+			if(row+1 <= 7 && col-2 >= 0){
+				// bisa ke atas 1 kiri 2
+				if(board[row+1][col-2].getPiece().equals("N")){
+					return true;
+				}
+			}
+			if(row-2 >= 0 && col+1 <= 7){
+				// bisa ke bawah 2 kanan 1
+				if(board[row-2][col+1].getPiece().equals("N")){
+					return true;
+				}
+			}
+			if(row-2 >= 0 && col-1 >= 0){
+				// bisa ke bawah 2 kiri 1
+				if(board[row-2][col-1].getPiece().equals("N")){
+					return true;
+				}
+			}
+			if(row-1 >= 0 && col+2 <= 7){
+				// bisa ke bawah 1 kanan 2
+				if(board[row-1][col+2].getPiece().equals("N")){
+					return true;
+				}
+			}
+			if(row-1 >= 0 && col-2 >= 0){
+				// bisa ke bawah 1 kiri 2
+				if(board[row-1][col-2].getPiece().equals("N")){
+					return true;
+				}
+			}
+			
+			//
+			
+			// check sekitar
+			// top
+			for(int i = 1; i < 8; i++){
+				if(row+i > 7 || col > 7) break;
+				if(isWhitePieceExist(row+i, col)) break;
+				if(board[row+i][col].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			//top right
+			for(int i = 1; i < 8; i++){
+				if(row+i > 7 || col+i > 7) break;
+				if(isWhitePieceExist(row+i, col+i)) break;
+				if(board[row+i][col+i].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			// top left
+			for(int i = 1; i < 8; i++){
+				if(row+i > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row+i, col-i)) break;
+				if(board[row+i][col-i].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			// left
+			for(int i = 1; i < 8; i++){
+				if(row > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row, col-i)) break;
+				if(board[row][col-i].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			// right
+			for(int i = 1; i < 8; i++){
+				if(row > 7 || col+i > 7) break;
+				if(isWhitePieceExist(row, col+i)) break;
+				if(board[row][col+i].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			// bottom left
+			for(int i = 1; i < 8; i++){
+				if(row-i > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row-i, col-i)) break;
+				if(board[row-i][col-i].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			// bottom
+			for(int i = 1; i < 8; i++){
+				if(row > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row, col-i)) break;
+				if(board[row][col-i].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			// bottom right
+			for(int i = 1; i < 8; i++){
+				if(row-i > 7 || col+i > 7) break;
+				if(isWhitePieceExist(row-i, col+i)) break;
+				if(board[row-i][col+i].getPiece().equals("Q")){
+					return true;
+				}
+			}
+			
+			return false;
+		}else if(turn.equals("BLACK")){
+			// find white king location
+			boolean isFound = false;
+			int row = 0;
+			int col = 0;
+			for(int i = 0; i < 8 ; i++){
+				for(int j = 0; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("K")){
+						isFound = true;
+						row = i;
+						col = j;
+					}
+					
+					if(isFound == true) break;
+				}
+				if(isFound == true) break;
+			}
+			
+			// check if enemy knight can eat black king
+			if(row+2 <= 7 && col+1 <= 7){
+				// bisa ke atas 2 kanan 1
+				if(board[row+2][col+1].getPiece().equals("n")){
+					return true;
+				}
+			}
+			if(row+2 <= 7 && col-1 >= 0){
+				// bisa ke atas 2 kiri 1
+				if(board[row+2][col-1].getPiece().equals("n")){
+					return true;
+				}
+			}
+			if(row+1 <= 7 && col+2 <= 7){
+				// bisa ke atas 1 kanan 2
+				if(board[row+1][col+2].getPiece().equals("n")){
+					return true;
+				}
+			}
+			if(row+1 <= 7 && col-2 >= 0){
+				// bisa ke atas 1 kiri 2
+				if(board[row+1][col-2].getPiece().equals("n")){
+					return true;
+				}
+			}
+			if(row-2 >= 0 && col+1 <= 7){
+				// bisa ke bawah 2 kanan 1
+				if(board[row-2][col+1].getPiece().equals("n")){
+					return true;
+				}
+			}
+			if(row-2 >= 0 && col-1 >= 0){
+				// bisa ke bawah 2 kiri 1
+				if(board[row-2][col-1].getPiece().equals("n")){
+					return true;
+				}
+			}
+			if(row-1 >= 0 && col+2 <= 7){
+				// bisa ke bawah 1 kanan 2
+				if(board[row-1][col+2].getPiece().equals("n")){
+					return true;
+				}
+			}
+			if(row-1 >= 0 && col-2 >= 0){
+				// bisa ke bawah 1 kiri 2
+				if(board[row-1][col-2].getPiece().equals("n")){
+					return true;
+				}
+			}
+			
+			//
+			
+			// check sekitar
+			// top
+			for(int i = 1; i < 8; i++){
+				if(row+i > 7 || col > 7) break;
+				if(isWhitePieceExist(row+i, col)) break;
+				if(board[row+i][col].getPiece().equals("q")){
+					return true;
+				}
+			}
+			//top right
+			for(int i = 1; i < 8; i++){
+				if(row+i > 7 || col+i > 7) break;
+				if(isWhitePieceExist(row+i, col+i)) break;
+				if(board[row+i][col+i].getPiece().equals("q")){
+					return true;
+				}
+			}
+			// top left
+			for(int i = 1; i < 8; i++){
+				if(row+i > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row+i, col-i)) break;
+				if(board[row+i][col-i].getPiece().equals("q")){
+					return true;
+				}
+			}
+			// left
+			for(int i = 1; i < 8; i++){
+				if(row > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row, col-i)) break;
+				if(board[row][col-i].getPiece().equals("q")){
+					return true;
+				}
+			}
+			// right
+			for(int i = 1; i < 8; i++){
+				if(row > 7 || col+i > 7) break;
+				if(isWhitePieceExist(row, col+i)) break;
+				if(board[row][col+i].getPiece().equals("q")){
+					return true;
+				}
+			}
+			// bottom left
+			for(int i = 1; i < 8; i++){
+				if(row-i > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row-i, col-i)) break;
+				if(board[row-i][col-i].getPiece().equals("q")){
+					return true;
+				}
+			}
+			// bottom
+			for(int i = 1; i < 8; i++){
+				if(row > 7 || col-i > 7) break;
+				if(isWhitePieceExist(row, col-i)) break;
+				if(board[row][col-i].getPiece().equals("q")){
+					return true;
+				}
+			}
+			// bottom right
+			for(int i = 1; i < 8; i++){
+				if(row-i > 7 || col+i > 7) break;
+				if(isWhitePieceExist(row-i, col+i)) break;
+				if(board[row-i][col+i].getPiece().equals("q")){
+					return true;
+				}
+			}
+			
+			return false;
+		}
+		
+		return false;
 	}
 	
 	/**
