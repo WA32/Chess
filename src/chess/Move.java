@@ -663,7 +663,7 @@ public class Move {
 			}
 			// top left
 			for(int i = 1; i < 8; i++){
-				if(row+i > 7 || col-i > 7) break;
+				if(row+i > 7 || col-i < 0) break;
 				if(isWhitePieceExist(row+i, col-i)) break;
 				if(board[row+i][col-i].getPiece().equals("Q")){
 					return true;
@@ -671,7 +671,7 @@ public class Move {
 			}
 			// left
 			for(int i = 1; i < 8; i++){
-				if(row > 7 || col-i > 7) break;
+				if(row > 7 || col-i < 0) break;
 				if(isWhitePieceExist(row, col-i)) break;
 				if(board[row][col-i].getPiece().equals("Q")){
 					return true;
@@ -687,7 +687,7 @@ public class Move {
 			}
 			// bottom left
 			for(int i = 1; i < 8; i++){
-				if(row-i > 7 || col-i > 7) break;
+				if(row-i < 0 || col-i < 0) break;
 				if(isWhitePieceExist(row-i, col-i)) break;
 				if(board[row-i][col-i].getPiece().equals("Q")){
 					return true;
@@ -695,7 +695,7 @@ public class Move {
 			}
 			// bottom
 			for(int i = 1; i < 8; i++){
-				if(row > 7 || col-i > 7) break;
+				if(row > 7 || col-i < 0) break;
 				if(isWhitePieceExist(row, col-i)) break;
 				if(board[row][col-i].getPiece().equals("Q")){
 					return true;
@@ -703,7 +703,7 @@ public class Move {
 			}
 			// bottom right
 			for(int i = 1; i < 8; i++){
-				if(row-i > 7 || col+i > 7) break;
+				if(row-i < 0 || col+i > 7) break;
 				if(isWhitePieceExist(row-i, col+i)) break;
 				if(board[row-i][col+i].getPiece().equals("Q")){
 					return true;
@@ -800,7 +800,7 @@ public class Move {
 			}
 			// top left
 			for(int i = 1; i < 8; i++){
-				if(row+i > 7 || col-i > 7) break;
+				if(row+i > 7 || col-i < 0) break;
 				if(isWhitePieceExist(row+i, col-i)) break;
 				if(board[row+i][col-i].getPiece().equals("q")){
 					return true;
@@ -808,7 +808,7 @@ public class Move {
 			}
 			// left
 			for(int i = 1; i < 8; i++){
-				if(row > 7 || col-i > 7) break;
+				if(row > 7 || col-i < 0) break;
 				if(isWhitePieceExist(row, col-i)) break;
 				if(board[row][col-i].getPiece().equals("q")){
 					return true;
@@ -824,7 +824,7 @@ public class Move {
 			}
 			// bottom left
 			for(int i = 1; i < 8; i++){
-				if(row-i > 7 || col-i > 7) break;
+				if(row-i < 0 || col-i < 0) break;
 				if(isWhitePieceExist(row-i, col-i)) break;
 				if(board[row-i][col-i].getPiece().equals("q")){
 					return true;
@@ -832,7 +832,7 @@ public class Move {
 			}
 			// bottom
 			for(int i = 1; i < 8; i++){
-				if(row > 7 || col-i > 7) break;
+				if(row > 7 || col-i < 0) break;
 				if(isWhitePieceExist(row, col-i)) break;
 				if(board[row][col-i].getPiece().equals("q")){
 					return true;
@@ -840,7 +840,7 @@ public class Move {
 			}
 			// bottom right
 			for(int i = 1; i < 8; i++){
-				if(row-i > 7 || col+i > 7) break;
+				if(row-i < 0 || col+i > 7) break;
 				if(isWhitePieceExist(row-i, col+i)) break;
 				if(board[row-i][col+i].getPiece().equals("q")){
 					return true;
