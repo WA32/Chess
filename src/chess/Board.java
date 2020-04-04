@@ -272,7 +272,7 @@ public class Board {
 					
 				}else if(piece.equals("k") || piece.equals("K")){
 					//  King
-					if(move.isValidKing(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+					if(move.isValidKing(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false || move.isKingSafe(rowDest, colDest,turn.toUpperCase())==false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}

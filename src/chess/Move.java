@@ -572,6 +572,158 @@ public class Move {
 		}
 	}
 	
+	
+	public boolean isKingSafe(int kingRow,int kingCol, String turn){
+		if(turn.equals("WHITE")){
+			
+			boolean found = false;
+			int row = 0;
+			int col = 0;
+			//find black queen
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("Q")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if black queen can get to king
+			if(isValidQueen(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//find black knight
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("N")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if black knight can get to king
+			if(isValidKnight(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//find black bishop
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("B")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if black bishop can get to king
+			if(isValidBishop(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//find black rook
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("R")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if black rook can get to king
+			if(isValidRook(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//check for pawn around king
+			
+			//top-right
+			if(board[kingRow+1][kingCol+1].getPiece().equals("P")) return false;
+			
+			//top-left
+			if(board[kingRow+1][kingCol-1].getPiece().equals("P")) return false;
+			
+		}else if(turn.equals("BLACK")){
+			boolean found = false;
+			int row = 0;
+			int col = 0;
+			//find white queen
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("q")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if white queen can get to king
+			if(isValidQueen(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//find white knight
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("n")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if white knight can get to king
+			if(isValidKnight(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//find white bishop
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("b")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if white bishop can get to king
+			if(isValidBishop(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//find white rook
+			for(int i = 0; i < 8 ;i++){
+				for(int j = 0 ; j < 8 ; j++){
+					if(board[i][j].getPiece().equals("r")){
+						row = i;
+						col = j;
+						found = true;
+					}
+					if(found==true) break;
+				}
+				if(found==true) break;
+			}
+			//check if white rook can get to king
+			if(isValidRook(row,col , kingRow, kingCol, turn)==true) return false;
+			
+			//check for pawn around king
+			
+			//top-right
+			if(board[kingRow+1][kingCol+1].getPiece().equals("p")) return false;
+			
+			//top-left
+			if(board[kingRow+1][kingCol-1].getPiece().equals("p")) return false;
+		}
+		
+		
+		return true;
+	}
+	
 	public boolean isKingInCheck(String turn){
 		
 		if(turn.equals("WHITE")){
