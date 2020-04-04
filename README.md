@@ -11,7 +11,7 @@ UTS
  - Draw Board V
  - Move notation (coordinate & algebraic) V
  - all piece regular moves V
- - check (progress)
+ - check v
  - castling V
  - validate illegal move: king must always in safe position. (progress)
 ```
