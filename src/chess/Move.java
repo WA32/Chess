@@ -713,11 +713,11 @@ public class Move {
 			
 			//check for pawn around king
 			
-			//top-right
-			if(board[kingRow+1][kingCol+1].getPiece().equals("p")) return false;
+			//bottom-right
+			if(board[kingRow-1][kingCol+1].getPiece().equals("p")) return false;
 			
-			//top-left
-			if(board[kingRow+1][kingCol-1].getPiece().equals("p")) return false;
+			//bottom-left
+			if(board[kingRow-1][kingCol-1].getPiece().equals("p")) return false;
 		}
 		
 		
