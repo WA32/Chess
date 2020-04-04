@@ -9,11 +9,11 @@
 ```
 UTS 
  - Draw Board V
- - Move notation (coordinate & algebraic)
- - all piece regular moves (progress)
- - check
- - castling
- - validate illegal move: king must always in safe position.
+ - Move notation (coordinate & algebraic) V
+ - all piece regular moves V
+ - check (progress)
+ - castling V
+ - validate illegal move: king must always in safe position. (progress)
 ```
 ```
 UAS
