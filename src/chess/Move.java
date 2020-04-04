@@ -864,7 +864,7 @@ public class Move {
 			
 			return false;
 		}else if(turn.equals("BLACK")){
-			// find white king location
+			// find black king location
 			boolean isFound = false;
 			int row = 0;
 			int col = 0;
@@ -937,7 +937,7 @@ public class Move {
 			// top
 			for(int i = 1; i < 8; i++){
 				if(row+i > 7 || col > 7) break;
-				if(isWhitePieceExist(row+i, col)) break;
+				if(isBlackPieceExist(row+i, col)) break;
 				if(board[row+i][col].getPiece().equals("q")){
 					return true;
 				}
@@ -945,7 +945,7 @@ public class Move {
 			//top right
 			for(int i = 1; i < 8; i++){
 				if(row+i > 7 || col+i > 7) break;
-				if(isWhitePieceExist(row+i, col+i)) break;
+				if(isBlackPieceExist(row+i, col+i)) break;
 				if(board[row+i][col+i].getPiece().equals("q")){
 					return true;
 				}
@@ -953,7 +953,7 @@ public class Move {
 			// top left
 			for(int i = 1; i < 8; i++){
 				if(row+i > 7 || col-i < 0) break;
-				if(isWhitePieceExist(row+i, col-i)) break;
+				if(isBlackPieceExist(row+i, col-i)) break;
 				if(board[row+i][col-i].getPiece().equals("q")){
 					return true;
 				}
@@ -961,7 +961,7 @@ public class Move {
 			// left
 			for(int i = 1; i < 8; i++){
 				if(row > 7 || col-i < 0) break;
-				if(isWhitePieceExist(row, col-i)) break;
+				if(isBlackPieceExist(row, col-i)) break;
 				if(board[row][col-i].getPiece().equals("q")){
 					return true;
 				}
@@ -969,7 +969,7 @@ public class Move {
 			// right
 			for(int i = 1; i < 8; i++){
 				if(row > 7 || col+i > 7) break;
-				if(isWhitePieceExist(row, col+i)) break;
+				if(isBlackPieceExist(row, col+i)) break;
 				if(board[row][col+i].getPiece().equals("q")){
 					return true;
 				}
@@ -977,7 +977,7 @@ public class Move {
 			// bottom left
 			for(int i = 1; i < 8; i++){
 				if(row-i < 0 || col-i < 0) break;
-				if(isWhitePieceExist(row-i, col-i)) break;
+				if(isBlackPieceExist(row-i, col-i)) break;
 				if(board[row-i][col-i].getPiece().equals("q")){
 					return true;
 				}
@@ -985,7 +985,7 @@ public class Move {
 			// bottom
 			for(int i = 1; i < 8; i++){
 				if(row > 7 || col-i < 0) break;
-				if(isWhitePieceExist(row, col-i)) break;
+				if(isBlackPieceExist(row, col-i)) break;
 				if(board[row][col-i].getPiece().equals("q")){
 					return true;
 				}
@@ -993,7 +993,7 @@ public class Move {
 			// bottom right
 			for(int i = 1; i < 8; i++){
 				if(row-i < 0 || col+i > 7) break;
-				if(isWhitePieceExist(row-i, col+i)) break;
+				if(isBlackPieceExist(row-i, col+i)) break;
 				if(board[row-i][col+i].getPiece().equals("q")){
 					return true;
 				}
