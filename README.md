@@ -5,22 +5,17 @@
 - Stephan Vebrian - 2201798950
 - Akmal Wiraprana - 2201836021
 
-### List of Features : 
-```
-UTS 
- - Draw Board V
- - Move notation (coordinate & algebraic) V
- - all piece regular moves V
- - check v
- - castling V
- - validate illegal move: king must always in safe position. (progress)
-```
-```
-UAS
- - En passant
- - Pawn promotion
- Checkmate
- - Draw on stalemate position
- - Unit test: test coverage min. 90%
- - reduce code smells
-```
+## To-Dos
+
+- [X] draw board
+- [X] move notation (coordinate or algebraic)
+- [X] all piece regular moves
+- [X] check
+- [X] castling
+- [ ] validate illegal move: king must always in safe position
+- [ ] en passant
+- [ ] pawn promotion
+- [ ] checkmate
+- [ ] draw on stalemate position
+- [ ] unit tests: test coverage min. 90%
+- [ ] reduce code smells
