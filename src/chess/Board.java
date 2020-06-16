@@ -127,6 +127,7 @@ public class Board {
 				// Pawn Promotion &&
 				// Rook, Knight, Bishop, Queen, King movement
 				
+				
 			}else{
 				if(queryInput.equals("0-0-0")){
 					// For queenside castling 
@@ -236,6 +237,25 @@ public class Board {
 					board[7][3].setPiece("r");
 					return true;
 				}
+				
+				//pawn promotions
+				if((piece.equals("P") || piece.equals("p")) && (rowDest == 7 || rowDest == 0)){
+					
+					if(move.isPromotionValid(queryInput, turn.toUpperCase(), rowDest) == false){
+						System.out.println("Invalid promotion");
+						return false;
+					}
+					String promotion = Character.toString(queryInput.charAt(5));
+					if(turn.equals("WhHITE")) promotion.toLowerCase();
+					board[rowSource][colSource].setPiece("X");
+					board[rowDest][colDest].setPiece(promotion);
+					
+					return true;
+				}
+					
+				
+					
+			
 				
 				// validate if piece can moved
 				// normal move

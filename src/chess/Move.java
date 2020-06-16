@@ -1005,6 +1005,28 @@ public class Move {
 		return false;
 	}
 	
+	//pawn promotion
+	public boolean isPromotionValid(String query, String turn, int rowDest){
+		
+		if(query.length() != 6){
+			return false;
+		}else if(query.charAt(5) != 'Q' &&
+				query.charAt(5) != 'R' &&
+				query.charAt(5) != 'N' &&
+				query.charAt(5) != 'B'){
+			
+			return false;
+		}else if(turn.equals("WHITE") && rowDest == 0){
+	
+			return false;
+		}else if(turn.equals("BLACK") && rowDest == 7){
+			
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * Check if piece exist in board coordinate
 	 * @param row
