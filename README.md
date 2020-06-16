@@ -14,7 +14,7 @@
 - [X] castling
 - [ ] validate illegal move: king must always in safe position
 - [ ] en passant
-- [ ] pawn promotion
+- [x] pawn promotion
 - [ ] checkmate
 - [ ] draw on stalemate position
 - [ ] unit tests: test coverage min. 90%
