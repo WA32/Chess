@@ -12,10 +12,10 @@
 - [X] all piece regular moves
 - [X] check
 - [X] castling
-- [ ] validate illegal move: king must always in safe position
+- [X] validate illegal move: king must always in safe position
 - [ ] en passant
 - [x] pawn promotion
 - [ ] checkmate
 - [ ] draw on stalemate position
-- [ ] unit tests: test coverage min. 90%
-- [ ] reduce code smells
+- [X] unit tests: test coverage min. 90%
+- [X] reduce code smells

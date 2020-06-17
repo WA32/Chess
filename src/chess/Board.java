@@ -1,5 +1,13 @@
 package chess;
 
+import com.sun.beans.util.Cache.Kind;
+
+import pieces.Bishop;
+import pieces.King;
+import pieces.Knight;
+import pieces.Pawn;
+import pieces.Queen;
+import pieces.Rook;
 
 /**
  * Board
@@ -17,11 +25,27 @@ public class Board {
 	private Main main;
 	private Piece[][] board = new Piece[8][8];
 	private Move move;
+	private Pawn pawn;
+	private Rook rook;
+	private Knight knight;
+	private Bishop bishop;
+	private Queen queen;
+	private King king;
+	
+	public Board(){
+		initBoard();
+	}
 	
 	public Board(Main game) {
 		initBoard();	
 		this.main = game;
 		this.move = new Move(board, game);
+		this.pawn = new Pawn(board, game);
+		this.rook = new Rook(board, game);	
+		this.bishop = new Bishop(board, game);
+		this.knight = new Knight(board, game);
+		
+		this.king = new King(board, game);
 	}
 	
 	private void initBoard(){
@@ -181,7 +205,7 @@ public class Board {
 				board[rowDest][colDest].setPiece(piece);
 				
 				// king In Check
-				if(move.isKingInCheck(turn.toUpperCase()) == true){
+				if(king.isKingInCheck(turn.toUpperCase()) == true){
 					// king is in check
 					
 					System.out.println("You're king is in check");
@@ -241,7 +265,7 @@ public class Board {
 				//pawn promotions
 				if((piece.equals("P") || piece.equals("p")) && (rowDest == 7 || rowDest == 0)){
 					
-					if(move.isPromotionValid(queryInput, turn.toUpperCase(), rowDest) == false){
+					if(pawn.isPromotionValid(queryInput, turn.toUpperCase(), rowDest) == false){
 						System.out.println("Invalid promotion");
 						return false;
 					}
@@ -261,38 +285,38 @@ public class Board {
 				// normal move
 				if(piece.equals("p") || piece.equals("P")){
 					// Pawn
-					if(move.isValidPawn(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+					if(pawn.isValidPawn(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}
 				}else if(piece.equals("r") || piece.equals("R")){
 					// Rook
-					if(move.isValidRook(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+					if(rook.isValidRook(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}
 				}else if(piece.equals("n") || piece.equals("N")){
 					// Knight / Kuda
-					if(move.isValidKnight(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+					if(knight.isValidKnight(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}
 				}else if(piece.equals("b") || piece.equals("B")){
 					// Bishop
-					if(move.isValidBishop(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+					if(bishop.isValidBishop(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}
 				}else if(piece.equals("q") || piece.equals("Q")){
 					//  Queen
-					if(move.isValidQueen(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
+					if(queen.isValidQueen(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}
 					
 				}else if(piece.equals("k") || piece.equals("K")){
 					//  King
-					if(move.isValidKing(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false || move.isKingSafe(rowDest, colDest,turn.toUpperCase())==false){
+					if(king.isValidKing(rowSource, colSource, rowDest, colDest, turn.toUpperCase()) == false || king.isKingSafe(rowDest, colDest,turn.toUpperCase())==false){
 						System.out.println(turn + " invalid move");
 						return false;
 					}

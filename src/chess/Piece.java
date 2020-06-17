@@ -8,7 +8,6 @@ public class Piece {
 	
 	public Piece(String piece) {
 		this.symbol = piece;
-		
 	}
 	
 	public void setBlock(String blockColor){
@@ -38,5 +37,4 @@ public class Piece {
 
 	}
 
-	
 }
